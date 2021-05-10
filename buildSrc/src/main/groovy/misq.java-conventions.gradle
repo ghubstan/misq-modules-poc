@@ -1,0 +1,48 @@
+// Build configurations shared by all sub-projects.
+// We use the groovy-gradle-plugin because the java convention plugin requires add java code to the build.
+
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+version = '0.0.1-SNAPSHOT'
+group = 'com.github.ghubstan'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.named('compileJava') {
+    sourceCompatibility = 15
+    targetCompatibility = 15
+    modularity.inferModulePath = true
+    options.javaModuleVersion = provider { project.version }
+    options.compilerArgs += ['-Xdoclint:none', '-Xlint:none', '-nowarn']
+}
+
+tasks.named("javadoc") {
+    source = sourceSets.main.allJava
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+tasks.named("test") {
+    useJUnitPlatform()
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+

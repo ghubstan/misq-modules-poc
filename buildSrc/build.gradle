@@ -1,0 +1,21 @@
+// groovy-gradle-plugin – Build logic projects with this type (i.e., that apply the groovy-gradle-plugin plugin)
+// allow you to write convention plugins as .gradle files in src/main/groovy.
+//
+// See Defining custom project types as convention plugins.
+// https://docs.gradle.org/current/userguide/structuring_software_products.html#defining_custom_project_types_as_convention_plugins
+//
+// See Sharing Build Logic between Subprojects
+// https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html#sharing_build_logic_between_subprojects
+//
+// See Use buildSrc to abstract imperative logic
+// The directory buildSrc is treated as an included build. Upon discovery of the directory, Gradle automatically
+// compiles and tests this code and puts it in the classpath of your build script. For multi-project builds
+// there can be only one buildSrc directory, which has to sit in the root project directory. buildSrc should be
+// preferred over script plugins as it is easier to maintain, refactor and test the code.
+// https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources
+
+plugins {
+    id 'groovy-gradle-plugin'
+}
+
+// println 'ghubtoken=' + System.getProperty("ghubtoken")

@@ -1,0 +1,28 @@
+
+https://docs.gradle.org/current/samples/sample_java_modules_multi_project.html
+
+
+https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_modular
+
+
+
+Modules could not be linked if java.modularity.inferModulePath = false
+
+
+
+Declaring module dependencies
+There is a direct relationship to the dependencies you declare in the build file and the module dependencies you
+declare in the module-info.java file. Ideally the declarations should be in sync as seen in the following table.
+Table 4. Mapping between Java module directives and Gradle configurations to declare dependencies
+
+    Java Module Directive 	    Gradle Configuration 	    Purpose
+
+    requires                    implementation              Declaring implementation dependencies
+    requires transitive         api                         Declaring API dependencies
+    requires static             compileOnly                 Declaring compile only dependencies
+    requires static transitive  compileOnlyApi              Declaring compile only API dependencies
+
+Gradle currently does not automatically check if the dependency declarations are in sync.
+
+
+https://www.oracle.com/corporate/features/understanding-java-9-modules.html
