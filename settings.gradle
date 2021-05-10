@@ -6,6 +6,7 @@ include 'disq'
 include 'fisq'
 include 'gisq'
 
+include 'logging'
 include 'threadmodel'
 include 'monetary'
 include 'walletrpc'
