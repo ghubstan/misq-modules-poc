@@ -1,5 +1,8 @@
 module org.misq.fisq {
-    // This module can use :list because it is transitively exported by :utilities
+
+    requires org.misq.annotation;
+    requires org.misq.logging;
+
     requires transitive org.misq.utilities;
     exports org.misq.fisq;
 }

@@ -2,19 +2,15 @@ plugins {
     id 'misq.java-conventions'
 }
 
-
-ext { // in alphabetical order
-    gsonVersion = '2.8.6'
-}
-
-
 dependencies {
-    // Note:  do not need a ':list' dependency because it is transitively available from utilities module.
-    api project(':utilities')
-    api project(':threadmodel')
-    api project(':monetary')
-
     implementation "com.google.code.gson:gson:$gsonVersion"
+
+    implementation project(':annotation')
+    implementation project(':logging')
+    implementation project(':utilities')
+    implementation project(':threadmodel')
+    implementation project(':monetary')
+    implementation project(':api')
 }
 
 publishing {
@@ -32,7 +28,7 @@ publishing {
     // To import individual module-playground modules:
     //    implementation 'com.github.ghubstan.module-playground:cisq:<commit>'
     //    implementation 'com.github.ghubstan.module-playground:fisq:<commit>'
-    // This does import the transitive dependencies too.  Nice!
+    // This does import the transitive dependencies.
     repositories {
         maven {
             name = "GitHubPackages"

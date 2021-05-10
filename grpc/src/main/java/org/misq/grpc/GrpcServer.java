@@ -15,4 +15,9 @@ public class GrpcServer {
     public void shutdown() {
         log.info("shutdown");
     }
+
+    public static void main(String[] args) {
+        GrpcServer grpcServer = new GrpcServer();
+        grpcServer.start();
+    }
 }

@@ -3,8 +3,9 @@ plugins {
 }
 
 dependencies {
-    // Note:  do not need a ':list' dependency because it is transitively available from utilities module.
-    api project(':utilities')
+    implementation project(':annotation')
+    implementation project(':logging')
+    implementation project(':utilities')
 }
 
 publishing {
@@ -22,7 +23,7 @@ publishing {
     // To import individual module-playground modules:
     //    implementation 'com.github.ghubstan.module-playground:cisq:<commit>'
     //    implementation 'com.github.ghubstan.module-playground:fisq:<commit>'
-    // This does import the transitive dependencies too.  Nice!
+    // This does import the transitive dependencies.
     repositories {
         maven {
             name = "GitHubPackages"

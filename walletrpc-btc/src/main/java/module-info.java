@@ -6,15 +6,14 @@ module org.misq.walletrpc.btc {
     requires org.checkerframework.checker.qual;
     requires com.google.errorprone.annotations;
     requires com.google.common;
-
-    requires org.slf4j;
-    requires ch.qos.logback.classic;
-    requires ch.qos.logback.core;
     requires lombok;
 
-    requires transitive org.misq.threadmodel;
-    requires transitive org.misq.monetary;
-    requires transitive org.misq.walletrpc;
+    requires org.misq.annotation;
+    requires org.misq.logging;
+    requires org.misq.utilities;
+    requires org.misq.threadmodel;
+    requires org.misq.monetary;
+    requires org.misq.walletrpc;
 
     exports org.misq.walletrpc.btc;
 }

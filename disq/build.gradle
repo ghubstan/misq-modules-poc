@@ -4,7 +4,9 @@ plugins {
 }
 
 dependencies {
-    api project(':utilities')
+    implementation project(':annotation')
+    implementation project(':logging')
+    implementation project(':utilities')
 }
 
 application {
@@ -29,7 +31,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/ghubstan/disq")
             credentials {
                 username = "ghubstan"
-                password =  System.getProperty("ghubtoken")
+                password = System.getProperty("ghubtoken")
             }
         }
     }

@@ -1,12 +1,12 @@
 jdk:
-   - openjdk15
+  - openjdk15
 before_install:
-   - ./jitpack-ensure-java-15.sh install
+  - ./jitpack-ensure-java-15.sh install
 install:
-   - if ! bash jitpack-ensure-java-15.sh use; then source ~/.sdkman/bin/sdkman-init.sh; fi
-   - echo "Checking java version..."
-   - java -version
-   - echo "Running a custom install command..."
-   - ./gradlew clean build assemble -x test
-   - ./gradlew publishToMavenLocal
+  - if ! bash jitpack-ensure-java-15.sh use; then source ~/.sdkman/bin/sdkman-init.sh; fi
+  - echo "Checking java version..."
+  - java -version
+  - echo "Running a custom install command..."
+  - ./gradlew clean build assemble -x test
+  - ./gradlew publishToMavenLocal
 

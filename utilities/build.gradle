@@ -3,9 +3,10 @@ plugins {
 }
 
 dependencies {
-    api project(':list')
+    implementation project(':annotation')
+    implementation project(':logging')
+    api project(':list')  // requires transitive org.misq.list
 }
-
 
 publishing {
     publications {
@@ -24,7 +25,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/ghubstan/utilities")
             credentials {
                 username = "ghubstan"
-                password =  System.getProperty("ghubtoken")
+                password = System.getProperty("ghubtoken")
             }
         }
     }

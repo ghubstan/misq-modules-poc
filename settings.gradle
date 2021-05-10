@@ -6,6 +6,7 @@ include 'disq'
 include 'fisq'
 include 'gisq'
 
+include 'annotation'
 include 'logging'
 include 'threadmodel'
 include 'monetary'
@@ -17,6 +18,7 @@ include 'web'
 include 'daemon'
 
 import org.gradle.util.GradleVersion
+
 def minGradleVersion = GradleVersion.version("7.0")
 def minJavaVersion = JavaVersion.VERSION_15
 if (GradleVersion.current().compareTo(minGradleVersion) >= 0 && JavaVersion.current().isCompatibleWith(minJavaVersion)) {

@@ -8,13 +8,12 @@ module org.misq.walletrpc {
     requires com.google.common;
     requires com.google.gson;
 
-    requires org.slf4j;
-    requires ch.qos.logback.classic;
-    requires ch.qos.logback.core;
     requires lombok;
-
-    requires transitive org.misq.threadmodel;
-    requires transitive org.misq.monetary;
+    requires org.misq.annotation;
+    requires org.misq.logging;
+    requires org.misq.utilities;
+    requires org.misq.threadmodel;
+    requires org.misq.monetary;
 
     exports org.misq.walletrpc;
 }

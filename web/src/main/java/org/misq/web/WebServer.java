@@ -20,6 +20,4 @@ public class WebServer {
         WebServer webServer = new WebServer();
         webServer.start();
     }
-
-
 }
