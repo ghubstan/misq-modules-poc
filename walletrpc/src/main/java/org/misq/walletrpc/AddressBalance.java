@@ -1,0 +1,55 @@
+/*
+ * This file is part of Bisq.
+ *
+ * Bisq is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at
+ * your option) any later version.
+ *
+ * Bisq is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Bisq. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package org.misq.walletrpc;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import lombok.Getter;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
+import java.util.List;
+
+@Getter
+public class AddressBalance {
+
+    // TODO Move to re-usable module.  (misq-render?)
+    private static final Gson GSON = new GsonBuilder().serializeNulls().create();
+
+    private final String address;
+    private final String amount;
+    private final int confirmations;
+    @Nullable
+    private final String label;
+    private final List<String> txIds;
+
+    public AddressBalance(String address,
+                          String amount,
+                          int confirmations,
+                          @Nullable String label,
+                          List<String> txIds) {
+        this.address = address;
+        this.amount = amount;
+        this.confirmations = confirmations;
+        this.label = label;
+        this.txIds = txIds;
+    }
+
+    public static String toJson(AddressBalance addressBalance) {
+        return GSON.toJson(addressBalance);
+    }
+}

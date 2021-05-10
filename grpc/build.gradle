@@ -1,0 +1,48 @@
+plugins {
+    id 'misq.java-conventions'
+}
+
+dependencies {
+    // Note:  do not need a ':list' dependency because it is transitively available from utilities module.
+    api project(':utilities')
+    api project(':threadmodel')
+    api project(':monetary')
+    api project(':api')
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.getGroup()
+            artifactId = project.getName()
+            version = project.getVersion()
+            from components.java
+        }
+    }
+    // Publish to jitpack:         $ ./gradlew clean build assemble publish
+    // Install in local mvn repo:  $ ./gradlew clean build publishToMavenLocal
+    //
+    // To import individual module-playground modules:
+    //    implementation 'com.github.ghubstan.module-playground:cisq:<commit>'
+    //    implementation 'com.github.ghubstan.module-playground:fisq:<commit>'
+    // This does import the transitive dependencies too.  Nice!
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ghubstan/" + project.getName())
+            credentials {
+                username = "ghubstan"
+                password = System.getProperty("ghubtoken")
+            }
+        }
+    }
+}
+
+signing {
+    // See https://docs.gradle.org/current/userguide/signing_plugin.html#signing_plugin
+    // The Signing Plugin currently only provides support for generating OpenPGP signatures
+    // (which is the signature format required for publication to the Maven Central Repository).
+    //
+    // sign publishing.publications.maven
+    // Cannot perform signing task ':cisq:signMavenPublication' because it has no configured signatory
+}

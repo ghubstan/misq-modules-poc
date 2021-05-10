@@ -5,3 +5,22 @@ include 'cisq'
 include 'disq'
 include 'fisq'
 include 'gisq'
+
+include 'threadmodel'
+include 'monetary'
+include 'walletrpc'
+include 'walletrpc-btc'
+include 'api'
+include 'grpc'
+include 'web'
+include 'daemon'
+
+import org.gradle.util.GradleVersion
+def minGradleVersion = GradleVersion.version("7.0")
+def minJavaVersion = JavaVersion.VERSION_15
+if (GradleVersion.current().compareTo(minGradleVersion) >= 0 && JavaVersion.current().isCompatibleWith(minJavaVersion)) {
+    println "Building ${rootProject.name} module with ${GradleVersion.current()} and Java ${JavaVersion.current()}."
+} else {
+    throw new GradleException("${GradleVersion.current()} and Java ${minJavaVersion} are required to build module.")
+}
+
