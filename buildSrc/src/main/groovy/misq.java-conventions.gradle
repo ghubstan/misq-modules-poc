@@ -6,6 +6,8 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+
+    // id 'extra-java-module-info'
 }
 
 version = '0.0.1-SNAPSHOT'
@@ -47,7 +49,6 @@ ext { // in alphabetical order
     errorProneAnnotationsVersion = '2.5.1'
     gsonVersion = '2.8.6'
     guavaVersion = '30.1.1-jre'
-    jacksonVersion = '2.12.1'
     javaxAnnotationVersion = '1.3.2'
     jetbrainsAnnotationsVersion = '13.0'
     jsonrpc4jVersion = '1.6.0.bisq.1'

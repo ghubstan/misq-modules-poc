@@ -9,6 +9,10 @@ dependencies {
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
+
+    // implementation 'io.ratpack:ratpack-core:1.8.2'
+    // implementation 'io.ratpack:ratpack-guice:1.8.2'
+    // implementation 'io.ratpack:ratpack-rx2:1.8.2'
 }
 
 publishing {
