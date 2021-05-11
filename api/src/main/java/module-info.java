@@ -9,5 +9,7 @@ module org.misq.api {
     requires org.misq.threadmodel;
     requires org.misq.monetary;
 
+    requires com.google.guice;
+
     exports org.misq.api;
 }

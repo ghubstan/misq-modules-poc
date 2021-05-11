@@ -1,63 +1,98 @@
+// org.misq.web is an unnamed module because it relies on many un-modularized jars.
+// See https://www.logicbig.com/tutorials/core-java-tutorial/modules/unnamed-modules.html
+// Summary
+//    The unnamed module does not have module-info.java, which means the classes which do not have
+//    modules are promoted to the unnamed module.
+//    The unnamed module 'requires' all other modules and 'exports' all its packages.
+//    The classes which were written in the older versions but now running in Java 9 environment will
+//    continue to work because they become the members of the unnamed module.
+//    If we want to run old code in Java 9 environment without migrating them to the module system,
+//    we should run them using class path (not module path)
+//
 plugins {
     id 'misq.java-conventions'
 }
 
-
 ext { // in alphabetical order
     findbugsVersion = '3.0.2'
+    gsonVersion = '2.8.6'
     javassistVersion = '3.22.0-GA'
     j2objcVersion = '1.3'
-    ratpackVersion = '1.8.2'
+    ratpackVersion = '1.9.0-rc-2'
+    ratpackLogbackVersion = '1.1.11'
+    ratpackSlf4jVersion = '1.7.30'
 }
 
 dependencies {
-    implementation project(':annotation')
-    implementation project(':logging')
-    implementation project(':utilities')
-    implementation project(':threadmodel')
-    implementation project(':monetary')
+    // implementation project(':annotation')
+    // implementation project(':logging')
+    // implementation project(':utilities')
+    // implementation project(':threadmodel')
+    // implementation project(':monetary')
     implementation project(':api')
 
+    implementation "aopalliance:aopalliance:1.0"
 
-    implementation "aopalliance:aopalliance:1"
+    implementation "com.google.code.gson:gson:$gsonVersion"
 
-    implementation "com.guicedee.services:javax.inject:1.1.1.8-jre15"
+    // implementation "com.guicedee.services:javax.inject:1.1.1.8-jre15"
 
-    implementation "com.google.code.findbugs:jsr305:$findbugsVersion"
+    // implementation "com.google.code.findbugs:jsr305:$findbugsVersion"
     implementation "com.google.guava:failureaccess:1.0.1"
-    implementation "com.google.guava:listenablefuture:$guiceVersion"
-    implementation ("com.google.inject:guice:$guiceVersion") {
+    implementation "com.google.guava:listenablefuture:$guavaVersion"
+
+
+    implementation("com.google.inject:guice:$guiceVersion") {
         exclude group: 'javax.inject', module: 'javax.inject'
     }
 
-    implementation "com.google.inject.extensions:extensions-parent:$guiceVersion"
-    implementation "com.google.j2objc:j2objc-annotations:$j2objcVersion"
+    // implementation "com.google.inject.extensions:extensions-parent:$guiceVersion"
+    // implementation "com.google.j2objc:j2objc-annotations:$j2objcVersion"
 
     implementation "io.ratpack:ratpack-core:$ratpackVersion"
-    // implementation "io.ratpack:ratpack-guice:$ratpackVersion"
-    // implementation "io.ratpack:ratpack-rx2:$ratpackVersion"
+    implementation("io.ratpack:ratpack-guice:$ratpackVersion") {
+        // exclude(module: 'guice')
+    }
+    implementation "io.ratpack:ratpack-rx2:$ratpackVersion"
+
+    implementation "org.slf4j:slf4j-api:$ratpackSlf4jVersion"
+    implementation("ch.qos.logback:logback-core:$ratpackLogbackVersion") {
+        // exclude(module: 'checker-framework')
+    }
+    implementation("ch.qos.logback:logback-classic:$ratpackLogbackVersion") {
+        // exclude(module: 'checker-framework')
+        exclude(module: 'javax.mail')
+    }
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    compileOnly "javax.annotation:javax.annotation-api:$javaxAnnotationVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 }
 
 
+/*
 extraJavaModuleInfo {
+    // module('gradle-simple-1.1.jar', 'com.github.jitpack:gradle-simple', '1.1')
+
     module('aopalliance-1.0.jar', 'aopalliance:aopalliance', '1.0')
     module('failureaccess-1.0.1.jar', 'com.google.guava:failureaccess', '1.0.1')
     module('javassist-3.22.0-GA.jar', 'org.javassist:javassist', "$javassistVersion")
-    module('javax.inject-1.1.1.8-jre15.jar', 'com.guicedee.services:javax.inject', '1.1.1.8-jre15')
+    // module('javax.inject-1.1.1.8-jre15.jar', 'com.guicedee.services:javax.inject', '1.1.1.8-jre15')
     module('jsr305-3.0.2.jar', 'com.google.code.findbugs:jsr305', "$findbugsVersion")
     module('j2objc-annotations-1.3.jar', 'com.google.j2objc:j2objc-annotations', "$j2objcVersion")
     module('listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar', 'com.google.guava:listenablefuture', '1.0.1')
 
-    // module('guice-multibindings-4.1.0.jar', 'com.google.inject.extensions:extensions-parent', "$guiceVersion")
-    module('javax.inject-1.jar', 'javax.inject:javax.inject', '1')
+    module('guice-multibindings-4.1.0.jar', 'com.google.inject.extensions:extensions-parent', "$guiceVersion")
+    // module('javax.inject-1.jar', 'javax.inject:javax.inject', '1')
     // module('javax.inject-1.1.1.8-jre15.jar', 'com.guicedee.services:javax.inject', '1.1.1.8-jre15')
 
     module('ratpack-base-1.8.2.jar', 'io.ratpack:ratpack-base', "$ratpackVersion")
     module('ratpack-core-1.8.2.jar', 'io.ratpack:ratpack-core', "$ratpackVersion")
     module('ratpack-exec-1.8.2.jar', 'io.ratpack:ratpack-exec', "$ratpackVersion")
-    module('ratpack-guice-1.8.2.jar', 'io.ratpack:ratpack-guice', "$ratpackVersion")
+//     module('ratpack-guice-1.8.2.jar', 'io.ratpack:ratpack-guice', "$ratpackVersion")
     module('ratpack-rx2-1.8.2.jar', 'io.ratpack:ratpack-rx2', "$ratpackVersion")
 }
+*/
 
 
 publishing {

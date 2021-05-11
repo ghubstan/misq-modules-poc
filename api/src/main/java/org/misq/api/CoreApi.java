@@ -6,4 +6,7 @@ public class CoreApi {
         return "0.0.1-SNAPSHOT";
     }
 
+    public long getBalance() {
+        return 100000000;
+    }
 }

@@ -8,6 +8,8 @@ dependencies {
     implementation project(':utilities')
     implementation project(':threadmodel')
     implementation project(':monetary')
+
+    implementation "com.google.inject:guice:$guiceVersion"
 }
 
 publishing {

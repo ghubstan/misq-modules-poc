@@ -10,5 +10,7 @@ module org.misq.daemon {
     requires org.misq.monetary;
     requires org.misq.api;
 
+    requires com.google.guice;
+
     exports org.misq.daemon;
 }
