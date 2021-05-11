@@ -1,0 +1,4 @@
+jar uf javax.inject-1.jar  META-INF
+
+
+

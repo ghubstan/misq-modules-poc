@@ -2,6 +2,14 @@ plugins {
     id 'misq.java-conventions'
 }
 
+
+ext { // in alphabetical order
+    findbugsVersion = '3.0.2'
+    javassistVersion = '3.22.0-GA'
+    j2objcVersion = '1.3'
+    ratpackVersion = '1.8.2'
+}
+
 dependencies {
     implementation project(':annotation')
     implementation project(':logging')
@@ -10,10 +18,47 @@ dependencies {
     implementation project(':monetary')
     implementation project(':api')
 
-    // implementation 'io.ratpack:ratpack-core:1.8.2'
-    // implementation 'io.ratpack:ratpack-guice:1.8.2'
-    // implementation 'io.ratpack:ratpack-rx2:1.8.2'
+
+    implementation "aopalliance:aopalliance:1"
+
+    implementation "com.guicedee.services:javax.inject:1.1.1.8-jre15"
+
+    implementation "com.google.code.findbugs:jsr305:$findbugsVersion"
+    implementation "com.google.guava:failureaccess:1.0.1"
+    implementation "com.google.guava:listenablefuture:$guiceVersion"
+    implementation ("com.google.inject:guice:$guiceVersion") {
+        exclude group: 'javax.inject', module: 'javax.inject'
+    }
+
+    implementation "com.google.inject.extensions:extensions-parent:$guiceVersion"
+    implementation "com.google.j2objc:j2objc-annotations:$j2objcVersion"
+
+    implementation "io.ratpack:ratpack-core:$ratpackVersion"
+    // implementation "io.ratpack:ratpack-guice:$ratpackVersion"
+    // implementation "io.ratpack:ratpack-rx2:$ratpackVersion"
 }
+
+
+extraJavaModuleInfo {
+    module('aopalliance-1.0.jar', 'aopalliance:aopalliance', '1.0')
+    module('failureaccess-1.0.1.jar', 'com.google.guava:failureaccess', '1.0.1')
+    module('javassist-3.22.0-GA.jar', 'org.javassist:javassist', "$javassistVersion")
+    module('javax.inject-1.1.1.8-jre15.jar', 'com.guicedee.services:javax.inject', '1.1.1.8-jre15')
+    module('jsr305-3.0.2.jar', 'com.google.code.findbugs:jsr305', "$findbugsVersion")
+    module('j2objc-annotations-1.3.jar', 'com.google.j2objc:j2objc-annotations', "$j2objcVersion")
+    module('listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar', 'com.google.guava:listenablefuture', '1.0.1')
+
+    // module('guice-multibindings-4.1.0.jar', 'com.google.inject.extensions:extensions-parent', "$guiceVersion")
+    module('javax.inject-1.jar', 'javax.inject:javax.inject', '1')
+    // module('javax.inject-1.1.1.8-jre15.jar', 'com.guicedee.services:javax.inject', '1.1.1.8-jre15')
+
+    module('ratpack-base-1.8.2.jar', 'io.ratpack:ratpack-base', "$ratpackVersion")
+    module('ratpack-core-1.8.2.jar', 'io.ratpack:ratpack-core', "$ratpackVersion")
+    module('ratpack-exec-1.8.2.jar', 'io.ratpack:ratpack-exec', "$ratpackVersion")
+    module('ratpack-guice-1.8.2.jar', 'io.ratpack:ratpack-guice', "$ratpackVersion")
+    module('ratpack-rx2-1.8.2.jar', 'io.ratpack:ratpack-rx2', "$ratpackVersion")
+}
+
 
 publishing {
     publications {

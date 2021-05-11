@@ -19,7 +19,7 @@ include 'daemon'
 
 import org.gradle.util.GradleVersion
 
-def minGradleVersion = GradleVersion.version("7.0")
+def minGradleVersion = GradleVersion.version("7.0.1")
 def minJavaVersion = JavaVersion.VERSION_15
 if (GradleVersion.current().compareTo(minGradleVersion) >= 0 && JavaVersion.current().isCompatibleWith(minJavaVersion)) {
     println "Building ${rootProject.name} module with ${GradleVersion.current()} and Java ${JavaVersion.current()}."

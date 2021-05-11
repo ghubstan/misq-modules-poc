@@ -16,6 +16,24 @@
 
 plugins {
     id 'groovy-gradle-plugin'
+    id 'java-gradle-plugin'  // This plugin is only needed for the custom 'extra-java-module-info' plugin.
 }
 
-// println 'ghubtoken=' + System.getProperty("ghubtoken")
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Required by custom 'extra-java-module-info' plugin, and should not be imported by any misq module.
+    implementation "org.ow2.asm:asm:8.0.1"
+}
+
+gradlePlugin {
+    plugins {
+        // Register plugin with an ID.
+        register("extra-java-module-info") {
+            id = "extra-java-module-info"
+            implementationClass = "org.gradle.transform.javamodules.ExtraModuleInfoPlugin"
+        }
+    }
+}

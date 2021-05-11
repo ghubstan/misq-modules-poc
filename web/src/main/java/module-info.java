@@ -10,8 +10,12 @@ module org.misq.web {
     requires org.misq.monetary;
     requires org.misq.api;
 
-    // requires ratpack.core;
-    // requires ratpack.base;
+    requires org.javassist;
+
+    requires com.google.inject;
+
+    requires ratpack.base;
+    requires ratpack.core;
     // requires ratpack.exec;
     // requires ratpack.guice;
     // requires ratpack.rx2;
