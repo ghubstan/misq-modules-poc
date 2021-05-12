@@ -19,26 +19,28 @@ package org.misq.grpc;
 
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import misq.proto.grpc.GetMethodHelpReply;
-import misq.proto.grpc.GetMethodHelpRequest;
-import misq.proto.grpc.HelpGrpc.HelpImplBase;
+import misq.proto.grpc.GetVersionReply;
+import misq.proto.grpc.GetVersionRequest;
 import org.misq.api.CoreApi;
 
+import static misq.proto.grpc.GetVersionGrpc.GetVersionImplBase;
+
 @Slf4j
-public class GrpcHelpService extends HelpImplBase {
+public class GrpcVersionService extends GetVersionImplBase {
 
     private final CoreApi coreApi;
 
-    public GrpcHelpService(CoreApi coreApi) {
+    public GrpcVersionService(CoreApi coreApi) {
         this.coreApi = coreApi;
     }
 
     @Override
-    public void getMethodHelp(GetMethodHelpRequest req,
-                              StreamObserver<GetMethodHelpReply> responseObserver) {
+    public void getVersion(GetVersionRequest req,
+                           StreamObserver<GetVersionReply> responseObserver) {
         try {
-            String helpText = coreApi.getHelp();
-            var reply = GetMethodHelpReply.newBuilder().setMethodHelp(helpText).build();
+            var reply = GetVersionReply.newBuilder()
+                    .setVersion(coreApi.getVersion())
+                    .build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         } catch (Throwable cause) {

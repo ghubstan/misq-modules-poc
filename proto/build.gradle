@@ -7,8 +7,13 @@ plugins {
 
 dependencies {
     implementation "com.google.protobuf:protobuf-gradle-plugin:0.8.16"
-    implementation "com.google.protobuf:protobuf-java:2.6.0"
+    implementation "com.google.protobuf:protobuf-java:3.12.4"
+
+    implementation "io.grpc:grpc-all:1.37.0"
     implementation "io.grpc:grpc-protobuf:1.37.0"
+
+    // TODO see if this is all need (not all)
+    // protobuf-java, grpc-stub, grpc-protobuf, and grpc-core
 
     api "javax.annotation:javax.annotation-api:$javaxAnnotationVersion"
     api "org.projectlombok:lombok:$lombokVersion"
@@ -19,10 +24,9 @@ sourceSets.main.java.srcDirs += [
         'build/generated/source/proto/main/java'
 ]
 
-/*
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.17.0-rc-2"
+        artifact = "com.google.protobuf:protoc:3.12.4"
     }
     plugins {
         grpc {
@@ -33,7 +37,6 @@ protobuf {
         all()*.plugins { grpc {} }
     }
 }
-*/
 
 publishing {
     publications {

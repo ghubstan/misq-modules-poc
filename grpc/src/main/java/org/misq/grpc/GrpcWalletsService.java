@@ -19,26 +19,27 @@ package org.misq.grpc;
 
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import misq.proto.grpc.GetMethodHelpReply;
-import misq.proto.grpc.GetMethodHelpRequest;
-import misq.proto.grpc.HelpGrpc.HelpImplBase;
+import misq.proto.grpc.GetBalanceReply;
+import misq.proto.grpc.GetBalanceRequest;
 import org.misq.api.CoreApi;
 
+import static misq.proto.grpc.WalletsGrpc.WalletsImplBase;
+
 @Slf4j
-public class GrpcHelpService extends HelpImplBase {
+public class GrpcWalletsService extends WalletsImplBase {
 
     private final CoreApi coreApi;
 
-    public GrpcHelpService(CoreApi coreApi) {
+    public GrpcWalletsService(CoreApi coreApi) {
         this.coreApi = coreApi;
     }
 
     @Override
-    public void getMethodHelp(GetMethodHelpRequest req,
-                              StreamObserver<GetMethodHelpReply> responseObserver) {
+    public void getBalance(GetBalanceRequest req,
+                           StreamObserver<GetBalanceReply> responseObserver) {
         try {
-            String helpText = coreApi.getHelp();
-            var reply = GetMethodHelpReply.newBuilder().setMethodHelp(helpText).build();
+            long balance = coreApi.getBalance();
+            var reply = GetBalanceReply.newBuilder().setBalance(balance).build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         } catch (Throwable cause) {
