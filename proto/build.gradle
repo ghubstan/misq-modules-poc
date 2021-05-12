@@ -19,6 +19,22 @@ sourceSets.main.java.srcDirs += [
         'build/generated/source/proto/main/java'
 ]
 
+/*
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.17.0-rc-2"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.37.0"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins { grpc {} }
+    }
+}
+*/
+
 publishing {
     publications {
         maven(MavenPublication) {

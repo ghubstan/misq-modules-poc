@@ -9,7 +9,7 @@ dependencies {
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
-    implementation project(':proto')
+    // implementation project(':proto')
 
     implementation "javax.inject:javax.inject:1"
     implementation "com.google.code.gson:gson:$gsonVersion"

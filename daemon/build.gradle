@@ -20,6 +20,8 @@ dependencies {
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
+
+    implementation project(':grpc')
     implementation project(':web')
 
     implementation "com.google.inject:guice:$guiceVersion"

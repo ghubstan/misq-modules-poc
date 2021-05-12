@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 import lombok.extern.slf4j.Slf4j;
 import org.misq.api.ApiDependencyModule;
 import org.misq.api.CoreApi;
+import org.misq.grpc.GrpcServer;
 import org.misq.web.server.WebServer;
 
 @Slf4j
@@ -23,7 +24,9 @@ public class DaemonMain {
         webServer.start();
 
 
-        // log.info("Starting grpc server...");
+        log.info("Starting grpc server...");
+        GrpcServer grpcServer = new GrpcServer(coreApi);
+        grpcServer.start();
     }
 
     public void shutdown() {
