@@ -15,7 +15,7 @@ import java.io.UncheckedIOException;
 @Slf4j
 public class GrpcServer {
 
-    // Using grpcurl
+    // Use grpcurl to test endpoints.
     // https://github.com/grpc/grpc-java/blob/master/documentation/server-reflection-tutorial.md
     // https://offensivedefence.co.uk/posts/grpc-attack-surface
     // Examples:
@@ -29,7 +29,6 @@ public class GrpcServer {
     // $ grpcurl --plaintext   localhost:9999 io.misq.protobuffer.Help/GetMethodHelp
     // $ grpcurl --plaintext   localhost:9999 io.misq.protobuffer.Wallets/GetBalance
     // $ grpcurl --plaintext   localhost:9999 describe io.misq.protobuffer.Wallets
-
 
     private final CoreApi coreApi;
     private final Server server;

@@ -36,7 +36,9 @@ protobuf {
         }
     }
     generateProtoTasks {
-        all()*.plugins { grpc {} }
+        all()*.plugins {
+            grpc {}
+        }
     }
     generatedFilesBaseDir = "$projectDir/build/generated/source"
 }
@@ -45,6 +47,12 @@ jar {
     // Exclude .proto files from generated jar.
     exclude '*.proto'
     includeEmptyDirs false
+}
+
+tasks.named("sourcesJar") {
+    // The 'dependsOn generateProto' configuration avoids gradle warning:  Task ':proto:sourcesJar' uses
+    // this output of task ':proto:generateProto' without declaring an explicit or implicit dependency.
+    dependsOn generateProto
 }
 
 publishing {
@@ -69,5 +77,3 @@ publishing {
         }
     }
 }
-
-
