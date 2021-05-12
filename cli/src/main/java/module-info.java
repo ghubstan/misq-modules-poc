@@ -1,4 +1,4 @@
-module org.misq.cisq {
+module org.misq.cli {
 
     requires java.annotation;
 
@@ -6,5 +6,5 @@ module org.misq.cisq {
     requires org.misq.logging;
     requires org.misq.utilities;
 
-    exports org.misq.cisq;
+    exports org.misq.cli;
 }

@@ -1,19 +1,30 @@
+// Structuring Large Projects
+// See https://docs.gradle.org/current/userguide/structuring_software_products.html#defining_custom_project_types_as_convention_plugins
+
 plugins {
     id 'misq.java-conventions'
+    id 'application'
+}
+
+application {
+    mainModule = 'org.misq.daemon'
+    project.mainClassName = 'org.misq.daemon.DaemonMain'
 }
 
 dependencies {
+
     implementation project(':annotation')
     implementation project(':logging')
     implementation project(':utilities')
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
-
     implementation project(':web')
 
     implementation "com.google.inject:guice:$guiceVersion"
+
 }
+
 
 publishing {
     publications {
@@ -28,7 +39,7 @@ publishing {
     // Install in local mvn repo:  $ ./gradlew clean build publishToMavenLocal
     //
     // To import individual module-playground modules:
-    //    implementation 'com.github.ghubstan.module-playground:cisq:<commit>'
+    //    implementation 'com.github.ghubstan.module-playground:cli:<commit>'
     //    implementation 'com.github.ghubstan.module-playground:fisq:<commit>'
     // This does import the transitive dependencies.
     repositories {
@@ -49,5 +60,5 @@ signing {
     // (which is the signature format required for publication to the Maven Central Repository).
     //
     // sign publishing.publications.maven
-    // Cannot perform signing task ':cisq:signMavenPublication' because it has no configured signatory
+    // Cannot perform signing task ':cli:signMavenPublication' because it has no configured signatory
 }

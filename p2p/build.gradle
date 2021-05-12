@@ -1,19 +1,11 @@
 plugins {
     id 'misq.java-conventions'
-    id 'application'
 }
 
 dependencies {
-    implementation project(':annotation')
-    implementation project(':logging')
-    implementation project(':utilities')
+    api "javax.annotation:javax.annotation-api:$javaxAnnotationVersion"
+    api "org.projectlombok:lombok:$lombokVersion"
 }
-
-application {
-    project.mainClassName = 'org.misq.fisq.Main'
-    mainModule = 'org.misq.fisq'
-}
-
 
 publishing {
     publications {

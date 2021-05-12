@@ -1,4 +1,4 @@
-package org.misq.cisq;
+package org.misq.cli;
 
 import org.junit.jupiter.api.Test;
 

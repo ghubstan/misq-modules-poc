@@ -24,7 +24,7 @@ publishing {
     // Install in local mvn repo:  $ ./gradlew clean build publishToMavenLocal
     //
     // To import individual module-playground modules:
-    //    implementation 'com.github.ghubstan.module-playground:cisq:<commit>'
+    //    implementation 'com.github.ghubstan.module-playground:cli:<commit>'
     //    implementation 'com.github.ghubstan.module-playground:fisq:<commit>'
     // This does import the transitive dependencies.
     repositories {
@@ -45,5 +45,5 @@ signing {
     // (which is the signature format required for publication to the Maven Central Repository).
     //
     // sign publishing.publications.maven
-    // Cannot perform signing task ':cisq:signMavenPublication' because it has no configured signatory
+    // Cannot perform signing task ':cli:signMavenPublication' because it has no configured signatory
 }

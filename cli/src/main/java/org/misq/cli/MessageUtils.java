@@ -1,4 +1,4 @@
-package org.misq.cisq;
+package org.misq.cli;
 
 class MessageUtils {
     public static String getMessage() {

@@ -29,7 +29,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ghubstan/gisq")
+            url = uri("https://maven.pkg.github.com/ghubstan/" + project.getName())
             credentials {
                 username = "ghubstan"
                 password = System.getProperty("ghubtoken")
