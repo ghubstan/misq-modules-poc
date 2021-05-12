@@ -19,10 +19,12 @@ dependencies {
     api "org.projectlombok:lombok:$lombokVersion"
 }
 
-sourceSets.main.java.srcDirs += [
-        'build/generated/source/proto/main/grpc',
-        'build/generated/source/proto/main/java'
-]
+sourceSets.main {
+    java.srcDirs += [
+            'build/generated/source/main/grpc',
+            'build/generated/source/main/java'
+    ]
+}
 
 protobuf {
     protoc {
@@ -36,6 +38,13 @@ protobuf {
     generateProtoTasks {
         all()*.plugins { grpc {} }
     }
+    generatedFilesBaseDir = "$projectDir/build/generated/source"
+}
+
+jar {
+    // Exclude .proto files from generated jar.
+    exclude '*.proto'
+    includeEmptyDirs false
 }
 
 publishing {
