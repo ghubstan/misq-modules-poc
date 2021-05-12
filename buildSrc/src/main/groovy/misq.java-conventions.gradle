@@ -6,7 +6,6 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
-
     // id 'extra-java-module-info' // Apply custom plugin written here in buildSrc.
 }
 

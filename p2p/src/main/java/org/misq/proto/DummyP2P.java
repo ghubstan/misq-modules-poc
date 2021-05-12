@@ -1,4 +1,4 @@
-package org.misq.p2p;
+package org.misq.proto;
 
 // Every module needs a closs.
 public class DummyP2P {

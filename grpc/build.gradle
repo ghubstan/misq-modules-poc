@@ -9,6 +9,16 @@ dependencies {
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
+    implementation project(':proto')
+
+    implementation "javax.inject:javax.inject:1"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    implementation "com.google.protobuf:protobuf-java:2.6.0"
+    implementation "io.grpc:grpc-protobuf:1.37.0"
+    implementation "io.grpc:grpc-stub:1.37.0"
+
+    runtimeOnly "io.grpc:grpc-netty-shaded:1.37.0"
 }
 
 publishing {

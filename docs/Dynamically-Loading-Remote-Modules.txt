@@ -1,3 +1,10 @@
+@ghubstan here is the link to our dev call on Wed. 12-May @ 17:00 CET
+
+
+https://meet.jit.si/misq-dev-call
+
+
+
 https://github.com/bisq-network/projects/issues/53
 https://github.com/bisq-network/projects/issues/53
 
@@ -16,14 +23,28 @@ ServiceLoader -> https://www.logicbig.com/tutorials/core-java-tutorial/java-se-a
 
 Nope, looks like ServiceLoader will not work for dynamic loading, only works if spi is on startup classpath?
 
-<dependency>
-  <groupId>misq-threadmodel</groupId>
-  <artifactId>threadmodel</artifactId>
-  <version>0.1-SNAPSHOT</version>
-</dependency>
-
 
 Java Modules, Dynamic Loading -> https://stackoverflow.com/questions/48742354/best-approach-to-dynamically-load-modules-classes-in-java
+
+Gradle -> https://docs.gradle.org/current/userguide/structuring_software_products.html#defining_custom_project_types_as_convention_plugins
+	Dowload Sample -> https://docs.gradle.org/current/samples/sample_structuring_software_projects.html
+	Composing builds -> https://docs.gradle.org/current/userguide/composite_builds.html#composite_builds
+	
+
+Gradle maven-publish 				-> https://docs.gradle.org/current/userguide/publishing_maven.html
+Gradle java-library plugin 			-> https://docs.gradle.org/current/userguide/java_library_plugin.html
+Gradle java-library-distribution 	-> https://docs.gradle.org/current/userguide/java_library_distribution_plugin.html#java_library_distribution_plugin
+Gradle The Signing Plugin			-> https://docs.gradle.org/current/userguide/signing_plugin.html#signing_plugin
+
+Java Modules / Gradle -> https://docs.gradle.org/current/userguide/publishing_setup.html
+
+Java Modules / Gradle -> https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_modular
+Java Modules / Gradle -> https://docs.gradle.org/current/samples/sample_java_modules_with_transform.html
+Java Modules / Gradle -> https://docs.gradle.org/current/userguide/java_library_distribution_plugin.html#java_library_distribution_plugin
+
+
+Java Modules / Gradle ->  https://alexkudlick.com/blog/building-modular-java-applications-with-gradle
+Java Modules / Gradle ->  https://github.com/jjohannes/extra-java-module-info
 
 
 Java Modules -> https://www.baeldung.com/java-9-modularity
@@ -36,19 +57,13 @@ Java Modules -> https://stackoverflow.com/questions/45283886/using-different-ver
 
 Java Modules -> https://duckduckgo.com/?q=%2Bjava++%2Bmodules+%2Bdynamic+%2Bloading&ia=web
 
-Java Modules -> https://alexkudlick.com/blog/building-modular-java-applications-with-gradle/
-
-Java Modules / Gradle -> https://docs.gradle.org/current/samples/sample_java_modules_with_transform.html
-
-Java Modules / Gradle ->  https://github.com/jjohannes/extra-java-module-info
 
 Split Packages -> https://www.logicbig.com/tutorials/core-java-tutorial/modules/split-packages.html
 
+Slit Packages go in Unamed Module -> https://www.logicbig.com/tutorials/core-java-tutorial/modules/unnamed-modules.html
+
 
 Github Modules -> https://devcenter.heroku.com/articles/git-submodules
-
-Github Modules -> https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry
-
 
 
 Gradle List Deps -> gradle threadmodel:dependencies
@@ -60,25 +75,25 @@ Gradle List Deps -> gradle threadmodel:dependencies
 What to try out first:
 
 	1)  Start up application built with Java Modules
-	
+
 	2)  "Download" more Java Modules to a central location (within app structure)
-	
+
 	3)  Use the JDK's ServicerLoader interface to dynamically load the downloaded module(s)
-				
+
 				The second part is how to get a right ClassLoader?
-				
-				If you want to give users the ability to import 
-				plugins from custom folders at runtime, you will 
+
+				If you want to give users the ability to import
+				plugins from custom folders at runtime, you will
 				have to use ClassLoader.
-				
+
 	4)  Do NOT use DI
-	
+
 	5)  Maybe don't even have to use class loaders
 		See 2nd answer in https://stackoverflow.com/questions/48742354/best-approach-to-dynamically-load-modules-classes-in-java
 
 
 
-Update:  I am "here", but been busy helping @sqrrm with the atomic trade work.  
+Update:  I am "here", but been busy helping @sqrrm with the atomic trade work.
 
 I have just begun to look at https://github.com/bisq-network/projects/issues/53.
 The 1st thing I can think of for a native java solution is downloading Java Modules from Github and using the JDK's ServicerLoader interface to dynamically load them with appropriate class loaders.
@@ -96,7 +111,7 @@ It would force a guice and netty upgrade.  Bisq and ratpacks dependencies overla
 
 Sorry, I was the sluggish one in the meet.  Been too busy to give https://github.com/bisq-network/projects/issues/53 the attention is needed before the meet.  Also sqeamish about phone-meets, being the target of euphemistically called "state actors".  But I gotta work!  Have experience as a working target too ;-)
 
- 
 
 
-	
+
+

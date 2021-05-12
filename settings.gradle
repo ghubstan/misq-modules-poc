@@ -6,19 +6,19 @@ include 'fisq'
 include 'gisq'
 
 include 'annotation'
-include 'p2p'
+include 'proto'
 include 'logging'
 include 'threadmodel'
 include 'monetary'
 include 'proto'
-include 'p2p'
+include 'proto'
 include 'walletrpc'
 include 'walletrpc-btc'
 include 'api'
 include 'grpc'
-include 'cli'
 include 'web'
 include 'daemon'
+include 'cli'
 
 import org.gradle.util.GradleVersion
 
