@@ -4,8 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation "com.google.protobuf:protobuf-gradle-plugin:0.8.16"
-
     implementation project(':annotation')
     implementation project(':logging')
     implementation project(':utilities')
@@ -16,9 +14,9 @@ dependencies {
     implementation "javax.inject:javax.inject:1"
     implementation "com.google.code.gson:gson:$gsonVersion"
 
-    implementation "io.grpc:grpc-all:1.37.0"
-    implementation "io.grpc:grpc-protobuf:1.37.0"
-    runtimeOnly "io.grpc:grpc-netty-shaded:1.37.0"
+    implementation "io.grpc:grpc-all:$grpcVersion"
+    implementation "io.grpc:grpc-protobuf:$grpcVersion"
+    runtimeOnly "io.grpc:grpc-netty-shaded:$grpcVersion"
 }
 
 sourceSets.main {
@@ -30,11 +28,11 @@ sourceSets.main {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.12.4"
+        artifact = "com.google.protobuf:protoc:$protocVersion"
     }
     plugins {
         grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.37.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:$grpcVersion"
         }
     }
     generateProtoTasks {

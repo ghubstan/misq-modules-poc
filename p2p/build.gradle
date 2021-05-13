@@ -4,14 +4,11 @@ plugins {
 }
 
 dependencies {
-    implementation "com.google.protobuf:protobuf-gradle-plugin:0.8.16"
-
     implementation project(':annotation')
     implementation project(':logging')
     implementation project(':utilities')
     implementation project(':threadmodel')
     implementation project(':monetary')
-    
 
     api "javax.annotation:javax.annotation-api:$javaxAnnotationVersion"
     api "org.projectlombok:lombok:$lombokVersion"
@@ -25,12 +22,7 @@ sourceSets.main {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.12.4"
-    }
-    plugins {
-        grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.37.0"
-        }
+        artifact = "com.google.protobuf:protoc:$protocVersion"
     }
     generateProtoTasks {
         all()
