@@ -52,6 +52,14 @@ public class WebServer {
 
             log.info("Ratpack running... set breakpoint here to check registry bindings.");
 
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                try {
+                    shutdown();
+                } catch (Exception ex) {
+                    log.error("", ex);
+                }
+            }));
+
         } catch (Exception ex) {
             log.error("", ex);
             throw new RuntimeException(ex);
@@ -67,10 +75,5 @@ public class WebServer {
                 log.error("Error stopping web server.", ex);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        // WebServer webServer = new WebServer();
-        // webServer.start();
     }
 }
