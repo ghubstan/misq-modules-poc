@@ -13,7 +13,7 @@ public class JsonTransform {
     private final Gson gson = new GsonBuilder().serializeNulls().create();
 
     public String toJson(Map<String, String> map) {
-        return gson.toJson(map, String.class);
+        return gson.toJson(map, map.getClass());
     }
 
     public String toJson(PeersResponse peersResponse) {
