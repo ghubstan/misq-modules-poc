@@ -24,6 +24,7 @@ import java.util.HashSet;
 
 import static java.net.InetAddress.getLoopbackAddress;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 @Slf4j
 public class P2PService {
 
@@ -31,7 +32,7 @@ public class P2PService {
         NodeAddress nodeAddress = new NodeAddress(getLoopbackAddress().getHostName(), 10_0000);
         PeersRequest peersRequest = new PeersRequest(nodeAddress);
         log.info("Sending peers request from {}", peersRequest);
-        @SuppressWarnings("rawtypes") HashSet<Peer> reportedPeers = new HashSet();
+        HashSet<Peer> reportedPeers = new HashSet();
         reportedPeers.add(new Peer(new NodeAddress("abbey.onion", 10_000), new Date().getTime()));
         reportedPeers.add(new Peer(new NodeAddress("bubba.onion", 10_000), new Date().getTime()));
         reportedPeers.add(new Peer(new NodeAddress("cecil.onion", 10_000), new Date().getTime()));
