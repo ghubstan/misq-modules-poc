@@ -15,6 +15,10 @@ group = 'com.github.ghubstan'
 ext {
     createTestReports = false
 
+    // Default generated src dirs:
+    generatedGrpcProtoSrcDir = 'build/generated/source/main/grpc'
+    generatedProtoSrcDir = 'build/generated/source/main/java'
+
     // Version properties in alphabetical order:
     checkerFrameworkVersion = '3.13.0'
     errorProneAnnotationsVersion = '2.5.1'
@@ -37,6 +41,27 @@ ext {
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation "com.google.protobuf:protobuf-gradle-plugin:$protobufGradlePluginVersion"
+
+    // implementation "com.guicedee.services:javax.inject:1.1.1.8-jre15"
+
+    // implementation "com.google.errorprone:error_prone_annotations:$errorProneAnnotationsVersion"
+    implementation("com.google.guava:guava:$guavaVersion") {
+        exclude(module: 'failureaccess')
+        exclude(module: 'findbugs')
+        exclude(module: 'listenablefuture')
+        exclude(module: 'jsr305')
+        exclude(module: 'j2objc-annotations')
+    }
+
+    implementation "com.google.protobuf:protobuf-java:$protobufJavaVersion"
+
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 configurations.all {
@@ -65,33 +90,11 @@ tasks.named("test") {
     useJUnitPlatform()
 }
 
-
 tasks.withType(Test).configureEach {
     maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
     if (!project.hasProperty("createTestReports")) {
         reports.html.enabled = false
         reports.junitXml.enabled = false
     }
-}
-
-dependencies {
-    implementation "com.google.protobuf:protobuf-gradle-plugin:$protobufGradlePluginVersion"
-
-    // implementation "com.guicedee.services:javax.inject:1.1.1.8-jre15"
-
-    // implementation "com.google.errorprone:error_prone_annotations:$errorProneAnnotationsVersion"
-    implementation("com.google.guava:guava:$guavaVersion") {
-        exclude(module: 'failureaccess')
-        exclude(module: 'findbugs')
-        exclude(module: 'listenablefuture')
-        exclude(module: 'jsr305')
-        exclude(module: 'j2objc-annotations')
-    }
-
-    implementation "com.google.protobuf:protobuf-java:$protobufJavaVersion"
-
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 

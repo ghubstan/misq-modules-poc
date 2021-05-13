@@ -3,6 +3,10 @@ plugins {
     id 'com.google.protobuf' version '0.8.16'
 }
 
+ext {
+    buildProtos = true
+}
+
 dependencies {
     implementation project(':annotation')
     implementation project(':logging')
@@ -19,11 +23,12 @@ dependencies {
     runtimeOnly "io.grpc:grpc-netty-shaded:$grpcVersion"
 }
 
+// We do not use the shared protobuf generation task via
+//    apply from: '../buildSrc/gen-protos.gradle'
+// because we need to generate grpc service protos here.
+// All other modules should use the shared gen-protos.gradle.
 sourceSets.main {
-    java.srcDirs += [
-            'build/generated/source/main/grpc',
-            'build/generated/source/main/java'
-    ]
+    java.srcDirs += [generatedProtoSrcDir, generatedGrpcProtoSrcDir]
 }
 
 protobuf {

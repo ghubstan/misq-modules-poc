@@ -14,21 +14,7 @@ dependencies {
     api "org.projectlombok:lombok:$lombokVersion"
 }
 
-sourceSets.main {
-    java.srcDirs += [
-            'build/generated/source/main/java'
-    ]
-}
-
-protobuf {
-    protoc {
-        artifact = "com.google.protobuf:protoc:$protocVersion"
-    }
-    generateProtoTasks {
-        all()
-    }
-    generatedFilesBaseDir = "$projectDir/build/generated/source"
-}
+apply from: '../buildSrc/gen-protos.gradle'
 
 jar {
     // Exclude .proto files from generated jar.
