@@ -18,9 +18,7 @@
 package org.misq.p2p;
 
 import lombok.Getter;
-import lombok.ToString;
 
-@ToString
 @Getter
 public class NodeAddress {
 
