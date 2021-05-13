@@ -2,10 +2,7 @@ package org.misq.web.server;
 
 import com.google.inject.AbstractModule;
 import org.misq.web.json.JsonTransform;
-import org.misq.web.server.handler.GetBalanceHandler;
-import org.misq.web.server.handler.GetVersionHandler;
-import org.misq.web.server.handler.MisqClientErrorHandler;
-import org.misq.web.server.handler.MisqServerErrorHandler;
+import org.misq.web.server.handler.*;
 import ratpack.error.ClientErrorHandler;
 import ratpack.error.ServerErrorHandler;
 
@@ -20,8 +17,9 @@ public class WebAppDependencyModule extends AbstractModule {
         bind(ClientErrorHandler.class).toInstance(new MisqClientErrorHandler(jsonTransform));
 
         // api handlers
-        bind(GetVersionHandler.class).toInstance(new GetVersionHandler(jsonTransform));
         bind(GetBalanceHandler.class).toInstance(new GetBalanceHandler(jsonTransform));
+        bind(GetPeersHandler.class).toInstance(new GetPeersHandler(jsonTransform));
+        bind(GetVersionHandler.class).toInstance(new GetVersionHandler(jsonTransform));
     }
 
 }

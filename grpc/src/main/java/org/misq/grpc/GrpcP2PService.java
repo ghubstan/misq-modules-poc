@@ -20,26 +20,29 @@ package org.misq.grpc;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import org.misq.api.CoreApi;
-import org.misq.grpc.proto.GetMethodHelpReply;
-import org.misq.grpc.proto.GetMethodHelpRequest;
+import org.misq.grpc.proto.GetPeersReply;
+import org.misq.grpc.proto.GetPeersRequest;
 
-import static org.misq.grpc.proto.HelpGrpc.HelpImplBase;
+import static org.misq.grpc.proto.P2PGrpc.P2PImplBase;
+
 
 @Slf4j
-public class GrpcHelpService extends HelpImplBase {
+public class GrpcP2PService extends P2PImplBase {
 
     private final CoreApi coreApi;
 
-    public GrpcHelpService(CoreApi coreApi) {
+    public GrpcP2PService(CoreApi coreApi) {
         this.coreApi = coreApi;
     }
 
     @Override
-    public void getMethodHelp(GetMethodHelpRequest req,
-                              StreamObserver<GetMethodHelpReply> responseObserver) {
+    public void getPeers(GetPeersRequest req,
+                         StreamObserver<GetPeersReply> responseObserver) {
         try {
-            String helpText = coreApi.getHelp();
-            var reply = GetMethodHelpReply.newBuilder().setMethodHelp(helpText).build();
+            var returnedPeers = coreApi.getPeers();
+            var reply = GetPeersReply.newBuilder()
+                    .setPeersResponse(returnedPeers.toProtoMessage())
+                    .build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         } catch (Throwable cause) {

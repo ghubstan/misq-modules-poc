@@ -24,19 +24,12 @@ ext { // in alphabetical order
 }
 
 dependencies {
-    // implementation project(':annotation')
-    // implementation project(':logging')
-    // implementation project(':utilities')
-    // implementation project(':threadmodel')
-    // implementation project(':monetary')
     implementation project(':api')
 
     implementation "aopalliance:aopalliance:1.0"
-
     implementation "com.google.code.gson:gson:$gsonVersion"
 
     // implementation "com.guicedee.services:javax.inject:1.1.1.8-jre15"
-
     // implementation "com.google.code.findbugs:jsr305:$findbugsVersion"
     implementation "com.google.guava:failureaccess:1.0.1"
     implementation "com.google.guava:listenablefuture:$guavaVersion"

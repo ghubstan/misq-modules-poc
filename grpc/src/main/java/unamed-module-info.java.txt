@@ -9,7 +9,7 @@ module org.misq.grpc {
     requires org.misq.threadmodel;
     requires org.misq.monetary;
     requires org.misq.api;
-    requires org.misq.proto;
+    requires org.misq.p2p;
 
     exports org.misq.grpc;
 }

@@ -3,13 +3,14 @@ plugins {
 }
 
 dependencies {
+    implementation "com.google.inject:guice:$guiceVersion"
+
     implementation project(':annotation')
     implementation project(':logging')
     implementation project(':utilities')
     implementation project(':threadmodel')
-    implementation project(':monetary')
-
-    implementation "com.google.inject:guice:$guiceVersion"
+    api project(':monetary')
+    api project(':p2p')
 }
 
 publishing {

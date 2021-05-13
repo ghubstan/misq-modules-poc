@@ -19,11 +19,11 @@ package org.misq.grpc;
 
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import misq.proto.grpc.GetBalanceReply;
-import misq.proto.grpc.GetBalanceRequest;
 import org.misq.api.CoreApi;
+import org.misq.grpc.proto.GetBalanceReply;
+import org.misq.grpc.proto.GetBalanceRequest;
 
-import static misq.proto.grpc.WalletsGrpc.WalletsImplBase;
+import static org.misq.grpc.proto.WalletsGrpc.WalletsImplBase;
 
 @Slf4j
 public class GrpcWalletsService extends WalletsImplBase {

@@ -4,6 +4,7 @@ import io.reactivex.Observable;
 import lombok.extern.slf4j.Slf4j;
 import org.misq.api.CoreApi;
 import org.misq.web.server.handler.GetBalanceHandler;
+import org.misq.web.server.handler.GetPeersHandler;
 import org.misq.web.server.handler.GetVersionHandler;
 import ratpack.guice.Guice;
 import ratpack.handling.RequestLogger;
@@ -42,8 +43,9 @@ public class WebServer {
                             })
                             // .get("streaming-movies", ctx -> ctx.get(StreamingMoviesHandler.class).handle(ctx))
                             // .get("bidi-streaming-movies", ctx -> ctx.get(BidiStreamingMoviesHandler.class).handle(ctx))
-                            .get("version", ctx -> ctx.get(GetVersionHandler.class).handle(ctx))
                             .get("balance", ctx -> ctx.get(GetBalanceHandler.class).handle(ctx))
+                            .get("peers", ctx -> ctx.get(GetPeersHandler.class).handle(ctx))
+                            .get("version", ctx -> ctx.get(GetVersionHandler.class).handle(ctx))
                             .get(ctx -> ctx.render("Welcome to Misq Web"))
                     )
             );

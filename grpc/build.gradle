@@ -1,24 +1,58 @@
 plugins {
     id 'misq.java-conventions'
+    id 'com.google.protobuf' version '0.8.16'
 }
 
 dependencies {
+    implementation "com.google.protobuf:protobuf-gradle-plugin:0.8.16"
+
     implementation project(':annotation')
     implementation project(':logging')
     implementation project(':utilities')
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
-    implementation project(':proto')
 
     implementation "javax.inject:javax.inject:1"
     implementation "com.google.code.gson:gson:$gsonVersion"
 
-    implementation "com.google.protobuf:protobuf-java:2.6.0"
-
     implementation "io.grpc:grpc-all:1.37.0"
     implementation "io.grpc:grpc-protobuf:1.37.0"
     runtimeOnly "io.grpc:grpc-netty-shaded:1.37.0"
+}
+
+sourceSets.main {
+    java.srcDirs += [
+            'build/generated/source/main/grpc',
+            'build/generated/source/main/java'
+    ]
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.12.4"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.37.0"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins { grpc {} }
+    }
+    generatedFilesBaseDir = "$projectDir/build/generated/source"
+}
+
+jar {
+    // Exclude .proto files from generated jar.
+    exclude '*.proto'
+    includeEmptyDirs false
+}
+
+tasks.named("sourcesJar") {
+    // The 'dependsOn generateProto' configuration avoids gradle warning:  Task ':proto:sourcesJar' uses
+    // this output of task ':proto:generateProto' without declaring an explicit or implicit dependency.
+    dependsOn generateProto
 }
 
 publishing {

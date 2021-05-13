@@ -19,11 +19,12 @@ package org.misq.grpc;
 
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import misq.proto.grpc.GetVersionReply;
-import misq.proto.grpc.GetVersionRequest;
 import org.misq.api.CoreApi;
+import org.misq.grpc.proto.GetVersionReply;
+import org.misq.grpc.proto.GetVersionRequest;
 
-import static misq.proto.grpc.GetVersionGrpc.GetVersionImplBase;
+import static org.misq.grpc.proto.GetVersionGrpc.GetVersionImplBase;
+
 
 @Slf4j
 public class GrpcVersionService extends GetVersionImplBase {

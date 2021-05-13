@@ -1,6 +1,7 @@
 package org.misq.web.server.handler;
 
 import lombok.extern.slf4j.Slf4j;
+import org.misq.p2p.PeersResponse;
 import org.misq.web.json.JsonTransform;
 import ratpack.handling.Handler;
 
@@ -28,6 +29,10 @@ public abstract class AbstractHandler implements Handler {
 
     protected String toJson(String key, Object value) {
         return jsonTransform.toJson(toMap(key, value));
+    }
+
+    protected String toJson(PeersResponse peersResponse) {
+        return jsonTransform.toJson(peersResponse);
     }
 
     protected String toJson(Throwable throwable) {

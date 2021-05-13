@@ -25,10 +25,13 @@ public class GrpcServer {
     //      io.misq.protobuffer.Help
     //      io.misq.protobuffer.Wallets
     //
-    // $ grpcurl --plaintext   localhost:9999 io.misq.protobuffer.GetVersion/GetVersion
-    // $ grpcurl --plaintext   localhost:9999 io.misq.protobuffer.Help/GetMethodHelp
-    // $ grpcurl --plaintext   localhost:9999 io.misq.protobuffer.Wallets/GetBalance
-    // $ grpcurl --plaintext   localhost:9999 describe io.misq.protobuffer.Wallets
+    // $ grpcurl --plaintext   localhost:9999 grpc.proto.Wallets/GetBalance
+    // $ grpcurl --plaintext   localhost:9999 grpc.proto.Help/GetMethodHelp
+    // $ grpcurl --plaintext   localhost:9999 grpc.proto.P2P/GetPeers
+    // $ grpcurl --plaintext   localhost:9999 grpc.proto.GetVersion/GetVersion
+    // Describe services
+    // $ grpcurl --plaintext   localhost:9999 describe grpc.proto.P2P
+    // $ grpcurl --plaintext   localhost:9999 describe grpc.proto.Wallets
 
     private final CoreApi coreApi;
     private final Server server;
@@ -38,6 +41,7 @@ public class GrpcServer {
         this.server = ServerBuilder.forPort(9999)
                 .addService(ProtoReflectionService.newInstance())
                 .addService(new GrpcHelpService(coreApi))
+                .addService(new GrpcP2PService(coreApi))
                 .addService(new GrpcVersionService(coreApi))
                 .addService(new GrpcWalletsService(coreApi))
                 // .intercept(new PasswordAuthInterceptor())
