@@ -9,7 +9,6 @@ include 'annotation'
 include 'logging'
 include 'threadmodel'
 include 'monetary'
-include 'proto'
 include 'p2p'
 include 'walletrpc'
 include 'walletrpc-btc'
@@ -28,4 +27,3 @@ if (GradleVersion.current().compareTo(minGradleVersion) >= 0 && JavaVersion.curr
 } else {
     throw new GradleException("${GradleVersion.current()} and Java ${minJavaVersion} are required to build module.")
 }
-
