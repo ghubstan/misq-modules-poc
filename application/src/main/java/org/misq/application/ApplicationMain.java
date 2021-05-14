@@ -1,4 +1,4 @@
-package org.misq.daemon;
+package org.misq.application;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -10,7 +10,7 @@ import org.misq.grpc.GrpcServer;
 import org.misq.web.server.WebServer;
 
 @Slf4j
-public class DaemonMain {
+public class ApplicationMain {
 
     // Asks user if he wants to download & run web server or grpc server (or both),
     // reads reply from cmd line, downloads and dynamically loads modules (I hope).
@@ -21,7 +21,7 @@ public class DaemonMain {
     @Nullable
     private GrpcServer grpcServer;
 
-    public DaemonMain() {
+    public ApplicationMain() {
     }
 
     public void start(CoreApi coreApi) {
@@ -65,7 +65,7 @@ public class DaemonMain {
 
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new ApiDependencyModule());
-        DaemonMain daemon = injector.getInstance(DaemonMain.class);
+        ApplicationMain daemon = injector.getInstance(ApplicationMain.class);
         daemon.start(injector.getInstance(CoreApi.class));
     }
 }

@@ -9,9 +9,9 @@ plugins {
 }
 
 application {
-    // TODO make daemon a module if possible (mainModule is name defined in module-info.java).
-    // mainModule = 'org.misq.daemon'
-    project.mainClassName = 'org.misq.daemon.DaemonMain'
+    // TODO make application a module if possible (mainModule is name defined in module-info.java).
+    // mainModule = 'org.misq.application'
+    project.mainClassName = 'org.misq.application.DaemonMain'
 }
 
 dependencies {

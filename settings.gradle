@@ -15,10 +15,10 @@ include 'p2p'
 include 'api'
 include 'grpc'
 include 'web'
-include 'daemon'
 include 'cli'
 include 'walletrpc'
 include 'walletrpc-btc'
+include 'application'
 
 import org.gradle.util.GradleVersion
 

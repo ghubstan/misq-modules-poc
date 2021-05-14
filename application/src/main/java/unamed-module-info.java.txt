@@ -1,0 +1,2 @@
+module org.misq.application {
+}
