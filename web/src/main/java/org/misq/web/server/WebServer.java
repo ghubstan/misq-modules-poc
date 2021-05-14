@@ -49,17 +49,7 @@ public class WebServer {
                             .get(ctx -> ctx.render("Welcome to Misq Web"))
                     )
             );
-
             log.info("Ratpack running... set breakpoint here to check registry bindings.");
-
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                try {
-                    shutdown();
-                } catch (Exception ex) {
-                    log.error("", ex);
-                }
-            }));
-
         } catch (Exception ex) {
             log.error("", ex);
             throw new RuntimeException(ex);
@@ -69,10 +59,10 @@ public class WebServer {
     public void shutdown() {
         if (ratpackServer.isRunning()) {
             try {
-                log.info("shutdown");
+                log.info("Server shutdown started");
                 ratpackServer.stop();
             } catch (Exception ex) {
-                log.error("Error stopping web server.", ex);
+                log.info("Server shutdown complete");
             }
         }
     }

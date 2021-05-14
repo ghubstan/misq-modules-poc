@@ -52,13 +52,6 @@ public class GrpcServer {
         try {
             server.start();
             log.info("Listening on port {}", server.getPort());
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                try {
-                    shutdown();
-                } catch (Exception ex) {
-                    log.error("", ex);
-                }
-            }));
         } catch (IOException ex) {
             throw new UncheckedIOException(ex);
         }

@@ -1,9 +1,4 @@
 rootProject.name = 'misq-modules-poc'
-include 'list'
-include 'utilities'
-include 'disq'
-include 'fisq'
-include 'gisq'
 
 include 'annotation'
 include 'logging'

@@ -7,7 +7,6 @@ dependencies {
 
     implementation project(':annotation')
     implementation project(':logging')
-    implementation project(':utilities')
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')

@@ -10,7 +10,6 @@ module org.misq.walletrpc.btc {
 
     requires org.misq.annotation;
     requires org.misq.logging;
-    requires org.misq.utilities;
     requires org.misq.threadmodel;
     requires org.misq.monetary;
     requires org.misq.walletrpc;

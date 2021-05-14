@@ -1,6 +1,5 @@
 package org.misq.daemon;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import lombok.extern.slf4j.Slf4j;
@@ -9,8 +8,6 @@ import org.misq.api.ApiDependencyModule;
 import org.misq.api.CoreApi;
 import org.misq.grpc.GrpcServer;
 import org.misq.web.server.WebServer;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 @Slf4j
 public class DaemonMain {
@@ -36,13 +33,12 @@ public class DaemonMain {
         grpcServer = new GrpcServer(coreApi);
         grpcServer.start();
 
+
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
-                Uninterruptibles.sleepUninterruptibly(6, SECONDS);
-                System.exit(0);
+                shutdown();
             } catch (Exception ex) {
                 log.error("", ex);
-                System.exit(1);
             }
         }));
 

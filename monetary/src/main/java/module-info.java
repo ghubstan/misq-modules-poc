@@ -5,7 +5,6 @@ module org.misq.monetary {
 
     requires org.misq.annotation;
     requires org.misq.logging;
-    requires org.misq.utilities;
 
     exports org.misq.monetary;
 }

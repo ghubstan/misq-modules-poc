@@ -4,7 +4,6 @@ module org.misq.cli {
 
     requires org.misq.annotation;
     requires org.misq.logging;
-    requires org.misq.utilities;
 
     exports org.misq.cli;
 }

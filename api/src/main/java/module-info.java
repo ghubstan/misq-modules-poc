@@ -7,7 +7,6 @@ module org.misq.api {
 
     requires org.misq.annotation;
     requires org.misq.logging;
-    requires org.misq.utilities;
     requires org.misq.threadmodel;
 
     requires transitive org.misq.monetary;

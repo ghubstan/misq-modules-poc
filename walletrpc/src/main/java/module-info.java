@@ -11,7 +11,7 @@ module org.misq.walletrpc {
     requires lombok;
     requires org.misq.annotation;
     requires org.misq.logging;
-    requires org.misq.utilities;
+
     requires org.misq.threadmodel;
     requires org.misq.monetary;
 
