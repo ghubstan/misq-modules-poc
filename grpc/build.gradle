@@ -15,8 +15,6 @@ dependencies {
     implementation project(':monetary')
     implementation project(':api')
 
-
-
     implementation "io.grpc:grpc-all:$grpcVersion"
     implementation "io.grpc:grpc-protobuf:$grpcVersion"
     runtimeOnly "io.grpc:grpc-netty-shaded:$grpcVersion"
