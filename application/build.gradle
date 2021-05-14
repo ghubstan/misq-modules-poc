@@ -25,6 +25,7 @@ dependencies {
     implementation project(':api')
 
     implementation project(':grpc')
+
     implementation project(':web')
 }
 

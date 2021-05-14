@@ -3,7 +3,11 @@ plugins {
 }
 
 dependencies {
-    api "com.google.inject:guice:$guiceVersion"
+    // https://search.maven.org/artifact/ca.stellardrift.guice-backport/guice/5.0.1/jar
+
+    api("com.google.inject:guice:$guiceVersion") {
+        exclude(module: 'guava')
+    }
 }
 
 publishing {

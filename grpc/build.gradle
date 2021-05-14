@@ -1,6 +1,13 @@
 plugins {
     id 'misq.java-conventions'
+    id 'java-library-distribution'
     id 'com.google.protobuf' version '0.8.16'
+}
+
+distributions {
+    main {
+        distributionBaseName = 'grpc-dist'
+    }
 }
 
 dependencies {
