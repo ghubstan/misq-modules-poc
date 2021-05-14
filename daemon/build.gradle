@@ -14,17 +14,16 @@ application {
 
 dependencies {
 
-    implementation project(':annotation')
-    implementation project(':logging')
+    implementation project(':third-party:libannotation')
+    implementation project(':third-party:liblogging')
+    implementation project(':third-party:libguice')
+
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
 
     implementation project(':grpc')
     implementation project(':web')
-
-    implementation "com.google.inject:guice:$guiceVersion"
-
 }
 
 publishing {

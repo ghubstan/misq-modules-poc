@@ -1,10 +1,7 @@
 module org.misq.p2p {
-    requires transitive java.annotation;
-    requires transitive lombok;
-    requires com.google.protobuf;
-
-    requires org.misq.annotation;
-    requires org.misq.logging;
+    requires org.misq.libproto;
+    requires org.misq.libannotation;
+    requires org.misq.liblogging;
     requires org.misq.threadmodel;
     requires org.misq.monetary;
 

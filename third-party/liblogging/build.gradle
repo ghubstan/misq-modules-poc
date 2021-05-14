@@ -1,0 +1,37 @@
+plugins {
+    id 'misq.java-conventions'
+}
+
+dependencies {
+    implementation project(':third-party:libannotation')
+    api "org.slf4j:slf4j-api:$slf4jVersion"
+    api "ch.qos.logback:logback-core:$logbackVersion"
+    api("ch.qos.logback:logback-classic:$logbackVersion") {
+        exclude(module: 'javax.mail')
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.getGroup()
+            artifactId = project.getName()
+            version = project.getVersion()
+            from components.java
+        }
+    }
+    // Publish to jitpack:         $ ./gradlew clean build assemble publish
+    // Install in local mvn repo:  $ ./gradlew clean build publishToMavenLocal
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ghubstan/" + project.getName())
+            credentials {
+                username = "ghubstan"
+                password = System.getProperty("ghubtoken")
+            }
+        }
+    }
+}
+
+

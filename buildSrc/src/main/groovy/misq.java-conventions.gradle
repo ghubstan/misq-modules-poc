@@ -1,7 +1,6 @@
 // Build configurations shared by all sub-projects.
-// We use the groovy-gradle-plugin (convention plugin)
-// because the java convention plugin requires add java code to the build.
-
+// We use the groovy-gradle-plugin (convention plugin) because the
+// java convention plugin requires adding java code to the build.
 plugins {
     id 'java-library'
     id 'maven-publish'
@@ -20,7 +19,7 @@ ext {
     generatedProtoSrcDir = 'build/generated/source/main/java'
 
     // Version properties in alphabetical order:
-    checkerFrameworkVersion = '3.13.0'
+    checkerFrameworkVersion = '3.8.0'
     errorProneAnnotationsVersion = '2.5.1'
     grpcVersion = '1.37.0'
     gsonVersion = '2.8.6'
@@ -44,21 +43,6 @@ repositories {
 }
 
 dependencies {
-    implementation "com.google.protobuf:protobuf-gradle-plugin:$protobufGradlePluginVersion"
-
-    // implementation "com.guicedee.services:javax.inject:1.1.1.8-jre15"
-
-    // implementation "com.google.errorprone:error_prone_annotations:$errorProneAnnotationsVersion"
-    implementation("com.google.guava:guava:$guavaVersion") {
-        exclude(module: 'failureaccess')
-        exclude(module: 'findbugs')
-        exclude(module: 'listenablefuture')
-        exclude(module: 'jsr305')
-        exclude(module: 'j2objc-annotations')
-    }
-
-    implementation "com.google.protobuf:protobuf-java:$protobufJavaVersion"
-
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
@@ -97,4 +81,3 @@ tasks.withType(Test).configureEach {
         reports.junitXml.enabled = false
     }
 }
-

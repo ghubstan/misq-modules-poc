@@ -1,10 +1,7 @@
 module org.misq.threadmodel {
-
-    requires java.base;
-    requires java.annotation;
-
-    requires org.misq.annotation;
-    requires org.misq.logging;
+    requires org.misq.libannotation;
+    requires org.misq.liblogging;
+    requires org.misq.libguava;
 
     exports org.misq.threadmodel;
 }

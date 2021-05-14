@@ -3,19 +3,19 @@ plugins {
     id 'com.google.protobuf' version '0.8.16'
 }
 
-ext {
-    buildProtos = true
-}
-
 dependencies {
-    implementation project(':annotation')
-    implementation project(':logging')
+    implementation project(':third-party:libannotation')
+    implementation project(':third-party:liblogging')
+    implementation project(':third-party:libproto')
+    implementation project(':third-party:libgson')
+    implementation project(':third-party:libnetty.4.1.52')
+    implementation "javax.inject:javax.inject:1"
+
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')
 
-    implementation "javax.inject:javax.inject:1"
-    implementation "com.google.code.gson:gson:$gsonVersion"
+
 
     implementation "io.grpc:grpc-all:$grpcVersion"
     implementation "io.grpc:grpc-protobuf:$grpcVersion"
@@ -23,7 +23,7 @@ dependencies {
 }
 
 // We do not use the shared protobuf generation task via
-//    apply from: '../buildSrc/gen-protos.gradle'
+//    apply from: '../libproto/gen-protos.gradle'
 // because we need to generate grpc service protos here.
 // All other modules should use the shared gen-protos.gradle.
 sourceSets.main {

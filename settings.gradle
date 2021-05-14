@@ -1,17 +1,24 @@
 rootProject.name = 'misq-modules-poc'
 
-include 'annotation'
-include 'logging'
+include 'third-party:libannotation'
+include 'third-party:libgson'
+include 'third-party:libguava'
+include 'third-party:libguice'
+include 'third-party:libproto'
+include 'third-party:liblogging'
+include 'third-party:libnetty.4.1.52'
+include 'third-party:libnetty.4.1.63'
+
 include 'threadmodel'
 include 'monetary'
 include 'p2p'
-include 'walletrpc'
-include 'walletrpc-btc'
 include 'api'
 include 'grpc'
 include 'web'
 include 'daemon'
 include 'cli'
+include 'walletrpc'
+include 'walletrpc-btc'
 
 import org.gradle.util.GradleVersion
 

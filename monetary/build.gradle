@@ -3,8 +3,9 @@ plugins {
 }
 
 dependencies {
-    implementation project(':annotation')
-    implementation project(':logging')
+    implementation project(':third-party:libannotation')
+    implementation project(':third-party:liblogging')
+    implementation project(':third-party:libguava')
 }
 
 publishing {

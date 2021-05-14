@@ -3,10 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation project(':third-party:libannotation')
+    implementation project(':third-party:liblogging')
+    implementation project(':third-party:libgson')
+    implementation project(':third-party:libguava')
 
-    implementation project(':annotation')
-    implementation project(':logging')
     implementation project(':threadmodel')
     implementation project(':monetary')
     implementation project(':api')

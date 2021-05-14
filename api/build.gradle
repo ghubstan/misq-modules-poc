@@ -3,10 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation "com.google.inject:guice:$guiceVersion"
+    implementation project(':third-party:libannotation')
+    implementation project(':third-party:liblogging')
+    implementation project(':third-party:libproto')
+    implementation project(':third-party:libguice')
 
-    implementation project(':annotation')
-    implementation project(':logging')
     implementation project(':threadmodel')
     api project(':monetary')
     api project(':p2p')

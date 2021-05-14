@@ -4,16 +4,15 @@ plugins {
 }
 
 dependencies {
-    implementation project(':annotation')
-    implementation project(':logging')
+    implementation project(':third-party:libannotation')
+    implementation project(':third-party:liblogging')
+    implementation project(':third-party:libproto')
+
     implementation project(':threadmodel')
     implementation project(':monetary')
-
-    api "javax.annotation:javax.annotation-api:$javaxAnnotationVersion"
-    api "org.projectlombok:lombok:$lombokVersion"
 }
 
-apply from: '../buildSrc/gen-protos.gradle'
+apply from: '../third-party/libproto/gen-protos.gradle'
 
 jar {
     // Exclude .proto files from generated jar.

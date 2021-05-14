@@ -1,9 +1,5 @@
 module org.misq.cli {
-
-    requires java.annotation;
-
-    requires org.misq.annotation;
-    requires org.misq.logging;
-
+    requires org.misq.libannotation;
+    requires org.misq.liblogging;
     exports org.misq.cli;
 }
