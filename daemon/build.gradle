@@ -5,10 +5,11 @@
 plugins {
     id 'misq.java-conventions'
     id 'application'
+    id 'distribution'
 }
 
 application {
-    // TODO make daemon a module if possible.
+    // TODO make daemon a module if possible (mainModule is name defined in module-info.java).
     // mainModule = 'org.misq.daemon'
     project.mainClassName = 'org.misq.daemon.DaemonMain'
 }
