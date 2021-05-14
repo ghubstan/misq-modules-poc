@@ -1,0 +1,14 @@
+module org.misq.web {
+    // Ratpack will not work with JPMS, but they are working on it.
+    requires org.misq.libguice;
+    requires org.misq.libnetty4163;
+    requires org.misq.api;
+    requires org.misq.monetary;
+    requires org.misq.p2p;
+    requires ratpack.base;
+    requires ratpack.core;
+    requires ratpack.guice;
+    requires ratpack.rx2;
+
+    exports org.misq.web;
+}

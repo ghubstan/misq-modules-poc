@@ -27,6 +27,8 @@ ext { // in alphabetical order
 }
 
 dependencies {
+    implementation project(':third-party:libannotation')
+    implementation project(':third-party:liblogging')
     implementation project(':third-party:libgson')
     implementation project(':third-party:libguice')
     implementation project(':third-party:libnetty.4.1.63')
@@ -35,12 +37,6 @@ dependencies {
     implementation "io.ratpack:ratpack-core:$ratpackVersion"
     implementation "io.ratpack:ratpack-guice:$ratpackVersion"
     implementation "io.ratpack:ratpack-rx2:$ratpackVersion"
-
-    implementation "org.slf4j:slf4j-api:$ratpackSlf4jVersion"
-    implementation "ch.qos.logback:logback-core:$ratpackLogbackVersion"
-    implementation("ch.qos.logback:logback-classic:$ratpackLogbackVersion") {
-        exclude(module: 'javax.mail')
-    }
 
     compileOnly "org.projectlombok:lombok:$lombokVersion"
     compileOnly "javax.annotation:javax.annotation-api:$javaxAnnotationVersion"

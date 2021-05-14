@@ -1,2 +1,13 @@
 module org.misq.grpc {
+    requires org.misq.libannotation;
+    requires org.misq.liblogging;
+    requires org.misq.libproto;
+    requires org.misq.libgson;
+    requires org.misq.libnetty4152;
+
+    // gRPC Java is not usable from Java 9 modules
+    // https://github.com/grpc/grpc-java/issues/3522
+    requires grpc.all;
+
+    exports org.misq.grpc;
 }
