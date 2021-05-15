@@ -1,0 +1,57 @@
+plugins {
+    id 'java-platform'
+    id 'maven-publish'
+}
+
+group = 'org.misq.platform'
+version = '0.0.1-SNAPSHOT'
+
+ext {
+    nettyVersion4152 = '4.1.52.Final'
+}
+
+dependencies {
+    constraints {
+        api("io.netty:netty-buffer:$nettyVersion4152")
+        api("io.netty:netty-codec:$nettyVersion4152")
+        api("io.netty:netty-codec-http:$nettyVersion4152")
+        api("io.netty:netty-common:$nettyVersion4152")
+        api("io.netty:netty-handler:$nettyVersion4152")
+        api("io.netty:netty-transport:$nettyVersion4152")
+
+        runtime("io.netty:netty-buffer:$nettyVersion4152")
+        runtime("io.netty:netty-codec:$nettyVersion4152")
+        runtime("io.netty:netty-codec-http:$nettyVersion4152")
+        runtime("io.netty:netty-common:$nettyVersion4152")
+        runtime("io.netty:netty-handler:$nettyVersion4152")
+        runtime("io.netty:netty-transport:$nettyVersion4152")
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.getGroup()
+            artifactId = project.getName()
+            version = project.getVersion()
+            from components.javaPlatform
+        }
+    }
+    // Publish to jitpack:         $ ./gradlew clean build assemble publish
+    // Install in local mvn repo:  $ ./gradlew clean build publishToMavenLocal
+    //
+    // To import individual module-playground modules:
+    //    implementation 'com.github.ghubstan.module-playground:cli:<commit>'
+    //    implementation 'com.github.ghubstan.module-playground:fisq:<commit>'
+    // This does import the transitive dependencies.
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ghubstan/" + project.getName())
+            credentials {
+                username = "ghubstan"
+                password = System.getProperty("ghubtoken")
+            }
+        }
+    }
+}

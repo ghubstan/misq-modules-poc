@@ -27,3 +27,8 @@ build
 buildSrc/build
 buildSrc/.gradle
 third-party/*/build
+grpc/grpc-platform/build
+grpc/grpc-platform/.gradle
+web/web-platform/build
+web/web-platform/.gradle
+

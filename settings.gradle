@@ -6,15 +6,18 @@ include 'third-party:libguava'
 include 'third-party:libguice'
 include 'third-party:libproto'
 include 'third-party:liblogging'
-include 'third-party:libnetty.4.1.52'
-include 'third-party:libnetty.4.1.63'
 
 include 'threadmodel'
 include 'monetary'
 include 'p2p'
 include 'api'
+
 include 'grpc'
+include 'grpc:grpc-platform'
+
 include 'web'
+include 'web:web-platform'
+
 include 'cli'
 include 'walletrpc'
 include 'walletrpc-btc'

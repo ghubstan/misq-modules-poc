@@ -11,11 +11,19 @@ distributions {
 }
 
 dependencies {
+    // Get recommended versions from the grpc-platform project
+    api platform(project(':grpc:grpc-platform'))
+    implementation 'io.netty:netty-buffer'
+    implementation 'io.netty:netty-codec'
+    implementation 'io.netty:netty-codec-http'
+    implementation 'io.netty:netty-common'
+    implementation 'io.netty:netty-handler'
+    implementation 'io.netty:netty-transport'
+
     implementation project(':third-party:libannotation')
     implementation project(':third-party:liblogging')
     implementation project(':third-party:libproto')
     implementation project(':third-party:libgson')
-    implementation project(':third-party:libnetty.4.1.52')
     implementation "javax.inject:javax.inject:1"
 
     implementation project(':threadmodel')

@@ -23,7 +23,6 @@ distributions {
 ext { // in alphabetical order
     ratpackVersion = '1.9.0-rc-2'
     ratpackLogbackVersion = '1.1.11'
-    ratpackSlf4jVersion = '1.7.30'
 }
 
 dependencies {
@@ -31,7 +30,16 @@ dependencies {
     implementation project(':third-party:liblogging')
     implementation project(':third-party:libgson')
     implementation project(':third-party:libguice')
-    implementation project(':third-party:libnetty.4.1.63')
+
+    // Get recommended versions from the web-platform project
+    api platform(project(':web:web-platform'))
+    implementation 'io.netty:netty-buffer'
+    implementation 'io.netty:netty-codec'
+    implementation 'io.netty:netty-codec-http'
+    implementation 'io.netty:netty-common'
+    implementation 'io.netty:netty-handler'
+    implementation 'io.netty:netty-transport'
+
     implementation project(':api')
 
     implementation "io.ratpack:ratpack-core:$ratpackVersion"
